@@ -1,5 +1,5 @@
 package org.ivc.dbms.Main;
 
-public class quarter {
+public class professors {
     
 }
