@@ -38,14 +38,17 @@
      // and
      // <PATH_TO_WALLET> is the path to the connection wallet on your machine.
      // NOTE: on a Mac, there's no C: drive...
-     final static String DB_URL = System.getenv("DB_URL");
+     final static String DB_URL = "jdbc:oracle:thin:@avp4b59m3xioruwk_tp?TNS_ADMIN=/Users/ryanvo/Downloads/$RE3IG0I";
+
      final static String DB_USER = "ADMIN";
-     final static String DB_PASSWORD = "password";
+     final static String DB_PASSWORD = "DavidJoynerRyanVo011!";
  
      // This method creates a database connection using
      // oracle.jdbc.pool.OracleDataSource.
      public static void main(String args[]) throws SQLException {
          Properties info = new Properties();
+         System.out.println(DB_URL);
+
  
          System.out.println("Initializing connection properties...");
          info.put(OracleConnection.CONNECTION_PROPERTY_USER_NAME, DB_USER);
