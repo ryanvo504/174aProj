@@ -18,15 +18,17 @@
     Step 3: Run the file with "java -cp lib/ojdbc11.jar ./src/TestConnection.java"
  */
 
+ package org.ivc.dbms.Main;
+
  import java.sql.Connection;
+ import java.sql.DatabaseMetaData;
  import java.sql.ResultSet;
  import java.sql.SQLException;
  import java.sql.Statement;
  import java.util.Properties;
- 
- import oracle.jdbc.pool.OracleDataSource;
+
  import oracle.jdbc.OracleConnection;
- import java.sql.DatabaseMetaData;
+ import oracle.jdbc.pool.OracleDataSource;
  
  public class TestConnection {
      // The recommended format of a connection URL is:
@@ -36,7 +38,7 @@
      // and
      // <PATH_TO_WALLET> is the path to the connection wallet on your machine.
      // NOTE: on a Mac, there's no C: drive...
-     final static String DB_URL = "jdbc:oracle:thin:@dbname_tp?TNS_ADMIN=C:/Users/momin/Downloads/Wallet_dbname";
+     final static String DB_URL = System.getenv("DB_URL");
      final static String DB_USER = "ADMIN";
      final static String DB_PASSWORD = "password";
  
