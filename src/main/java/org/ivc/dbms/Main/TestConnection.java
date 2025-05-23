@@ -38,7 +38,7 @@
      // and
      // <PATH_TO_WALLET> is the path to the connection wallet on your machine.
      // NOTE: on a Mac, there's no C: drive...
-     final static String DB_URL = "jdbc:oracle:thin:@avp4b59m3xioruwk_tp?TNS_ADMIN=/Users/ryanvo/Downloads/$RE3IG0I";
+     final static String DB_URL = "jdbc:oracle:thin:@avp4b59m3xioruwk_tp?TNS_ADMIN=c:/Wallet_AVP4B59M3XIORUWK";
 
      final static String DB_USER = "ADMIN";
      final static String DB_PASSWORD = "DavidJoynerRyanVo011!";
