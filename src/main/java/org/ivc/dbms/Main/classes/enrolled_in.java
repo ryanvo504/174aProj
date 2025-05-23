@@ -1,4 +1,4 @@
-package org.ivc.dbms.Main;
+package org.ivc.dbms.Main.classes;
 
 public class enrolled_in {
     
