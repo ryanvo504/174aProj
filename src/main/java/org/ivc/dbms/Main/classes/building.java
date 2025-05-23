@@ -21,4 +21,10 @@ public class building {
     }
 
     
+    public building(Long capacity, Long buildingCode) {
+        this.capacity = capacity;
+        this.buildingCode = buildingCode;
+    }
+
+    
 }

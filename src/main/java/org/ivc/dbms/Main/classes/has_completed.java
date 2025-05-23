@@ -41,6 +41,11 @@ public class has_completed {
         return sb.toString();
     }
 
+    public has_completed(Long studentId, Long courseId, char grade) {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.grade = grade;
+    }
 
 
 

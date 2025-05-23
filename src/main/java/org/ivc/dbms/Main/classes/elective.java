@@ -25,6 +25,9 @@ public class elective {
         return "elective [majorId=" + majorId + ", CourseId=" + CourseId + "]";
     }
 
-
+    public elective(Long majorId, Long CourseId) {
+        this.majorId = majorId;
+        this.CourseId = CourseId;
+    }
 
 }

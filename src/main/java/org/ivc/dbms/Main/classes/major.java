@@ -29,5 +29,10 @@ public class major {
         sb.append('}');
         return sb.toString();
     }
+
+    public major(Long deptId, String name) {
+        this.deptId = deptId;
+        this.name = name;
+    }
      
 }
