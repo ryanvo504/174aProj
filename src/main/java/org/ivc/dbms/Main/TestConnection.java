@@ -25,10 +25,15 @@
  import java.sql.ResultSet;
  import java.sql.SQLException;
  import java.sql.Statement;
- import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
- import oracle.jdbc.OracleConnection;
- import oracle.jdbc.pool.OracleDataSource;
+import org.ivc.dbms.Main.DAOs.courseDAO;
+import org.ivc.dbms.Main.classes.course;
+
+import oracle.jdbc.OracleConnection;
+import oracle.jdbc.pool.OracleDataSource;
  
  public class TestConnection {
      // The recommended format of a connection URL is:
@@ -38,52 +43,61 @@
      // and
      // <PATH_TO_WALLET> is the path to the connection wallet on your machine.
      // NOTE: on a Mac, there's no C: drive...
-     final static String DB_URL = "jdbc:oracle:thin:@avp4b59m3xioruwk_tp?TNS_ADMIN=/Users/ryanvo/Downloads/$RE3IG0I";
+     final static String DB_URL = "jdbc:oracle:thin:@avp4b59m3xioruwk_tp?TNS_ADMIN=c:/Wallet_AVP4B59M3XIORUWK";
 
      final static String DB_USER = "ADMIN";
      final static String DB_PASSWORD = "DavidJoynerRyanVo011!";
  
      // This method creates a database connection using
      // oracle.jdbc.pool.OracleDataSource.
-     public static void main(String args[]) throws SQLException {
-         Properties info = new Properties();
-         System.out.println(DB_URL);
+        public static void main(String args[]) throws SQLException {
+            Properties info = new Properties();
+            System.out.println(DB_URL);
 
- 
-         System.out.println("Initializing connection properties...");
-         info.put(OracleConnection.CONNECTION_PROPERTY_USER_NAME, DB_USER);
-         info.put(OracleConnection.CONNECTION_PROPERTY_PASSWORD, DB_PASSWORD);
-         info.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "20");
- 
-         System.out.println("Creating OracleDataSource...");
-         OracleDataSource ods = new OracleDataSource();
- 
-         System.out.println("Setting connection properties...");
-         ods.setURL(DB_URL);
-         ods.setConnectionProperties(info);
- 
-         // With AutoCloseable, the connection is closed automatically
-         try (OracleConnection connection = (OracleConnection) ods.getConnection()) {
-             System.out.println("Connection established!");
-             // Get JDBC driver name and version
-             DatabaseMetaData dbmd = connection.getMetaData();
-             System.out.println("Driver Name: " + dbmd.getDriverName());
-             System.out.println("Driver Version: " + dbmd.getDriverVersion());
-             // Print some connection properties
-             System.out.println(
-                 "Default Row Prefetch Value: " + connection.getDefaultRowPrefetch()
-             );
-             System.out.println("Database username: " + connection.getUserName());
-             System.out.println();
-             // Perform some database operations
-             insertTA(connection);
-             printInstructors(connection);
-         } catch (Exception e) {
-             System.out.println("CONNECTION ERROR:");
-             System.out.println(e);
-         }
-     }
- 
+    
+            System.out.println("Initializing connection properties...");
+            info.put(OracleConnection.CONNECTION_PROPERTY_USER_NAME, DB_USER);
+            info.put(OracleConnection.CONNECTION_PROPERTY_PASSWORD, DB_PASSWORD);
+            info.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "20");
+    
+            System.out.println("Creating OracleDataSource...");
+            OracleDataSource ods = new OracleDataSource();
+    
+            System.out.println("Setting connection properties...");
+            ods.setURL(DB_URL);
+            ods.setConnectionProperties(info);
+    
+            // With AutoCloseable, the connection is closed automatically
+            try (OracleConnection connection = (OracleConnection) ods.getConnection()) {
+                System.out.println("Connection established!");
+                // Get JDBC driver name and version
+                DatabaseMetaData dbmd = connection.getMetaData();
+                System.out.println("Driver Name: " + dbmd.getDriverName());
+                System.out.println("Driver Version: " + dbmd.getDriverVersion());
+                // Print some connection properties
+                System.out.println(
+                    "Default Row Prefetch Value: " + connection.getDefaultRowPrefetch()
+                );
+                System.out.println("Database username: " + connection.getUserName());
+                System.out.println();
+                // Perform some database operations
+
+            } catch (Exception e) {
+                System.out.println("CONNECTION ERROR:");
+                System.out.println(e);
+            }
+
+            Connection connection = ods.getConnection();
+
+            List<course> courses = new ArrayList<>();
+            courses.add(new course("ECE154", "Architecture"));
+            courseDAO courseDAO = new courseDAO(connection);
+            for(course Course : courses){
+                courseDAO.addCourse(Course);
+            }
+            
+        }
+
      // Inserts another TA into the Instructors table.
      public static void insertTA(Connection connection) throws SQLException {
          System.out.println("Preparing to insert TA into Instructors table...");
