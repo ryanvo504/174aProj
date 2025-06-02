@@ -2,8 +2,7 @@ package org.ivc.dbms.Main.classes;
 
 public class has_completed {
     private Long studentId;
-    private Long courseId;
-
+    private String courseName;
     private char grade;
 
     public Long getStudentId() {
@@ -14,12 +13,12 @@ public class has_completed {
         this.studentId = studentId;
     }
 
-    public Long getCourseId() {
-        return courseId;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public char getGrade() {
@@ -35,15 +34,15 @@ public class has_completed {
         StringBuilder sb = new StringBuilder();
         sb.append("has_completed{");
         sb.append("studentId=").append(studentId);
-        sb.append(", courseId=").append(courseId);
+        sb.append(", courseId=").append(courseName);
         sb.append(", grade=").append(grade);
         sb.append('}');
         return sb.toString();
     }
 
-    public has_completed(Long studentId, Long courseId, char grade) {
+    public has_completed(Long studentId, String courseName, char grade) {
         this.studentId = studentId;
-        this.courseId = courseId;
+        this.courseName = courseName;
         this.grade = grade;
     }
 

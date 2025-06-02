@@ -23,14 +23,14 @@ public class majorDAO {
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
-            pstmt.setString(2, major.getName());
+            pstmt.setString(1, major.getName());
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
         }
     }
 
-    public major getmajorByPermNumber(String name) throws SQLException {
+    public major getmajorbyname(String name) throws SQLException {
         String sql = "SELECT name FROM major WHERE name = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -48,7 +48,7 @@ public class majorDAO {
 
     public List<major> getAllmajors() throws SQLException {
         List<major> majors = new ArrayList<>();
-        String sql = "SELECT name, title FROM major";
+        String sql = "SELECT * FROM major";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
@@ -75,12 +75,12 @@ public class majorDAO {
         }
     }
 
-    public boolean updatemajor(major major) throws SQLException {
+    public boolean updatemajor(major major, String updated) throws SQLException {
         String sql = "UPDATE major SET name = ? WHERE name = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, major.getName());
-            pstmt.setString(2, major.getName()); 
+            pstmt.setString(2, updated); 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
         }

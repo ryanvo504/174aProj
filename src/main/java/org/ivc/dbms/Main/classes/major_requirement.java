@@ -1,23 +1,29 @@
 package org.ivc.dbms.Main.classes;
 
 public class major_requirement {
-    private Long majorId;
-    private Long CourseId;
-    public Long getMajorId() {
-        return majorId;
+    private String major;
+    private String courseNumber;
+
+    public String getMajor() {
+        return major;
     }
-    public void setMajorId(Long majorId) {
-        this.majorId = majorId;
+
+    public void setMajor(String major) {
+        this.major = major;
     }
-    public Long getCourseId() {
-        return CourseId;
+
+    public String getcourseNumber() {
+        return courseNumber;
     }
-    public void setCourseId(Long courseId) {
-        CourseId = courseId;
+
+    public void setcourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
     }
-    @Override
-    public String toString() {
-        return "major_requirement [majorId=" + majorId + ", CourseId=" + CourseId +"]";
+
+    public major_requirement(String major, String courseNumber) {
+        this.major = major;
+        this.courseNumber = courseNumber;
     }
+
 
 }

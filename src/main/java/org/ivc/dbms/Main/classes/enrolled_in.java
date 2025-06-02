@@ -1,35 +1,28 @@
 package org.ivc.dbms.Main.classes;
 
 public class enrolled_in {
-    private Long studentId;
-    private Long courseId;
-    public quarter getQuarter() {
-        return quarter;
-    }
-    public void setQuarter(quarter quarter) {
-        this.quarter = quarter;
-    }
+    private Integer permNumber;
+    private String courseNumber;
 
-    private quarter quarter;
-    public Long getStudentId() {
-        return studentId;
+
+    public Integer getPermNumber() {
+        return permNumber;
     }
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void getPermNumber(Integer permNumber) {
+        this.permNumber = permNumber;
     }
-    public Long getCourseId() {
-        return courseId;
+    public String getcourseNumber() {
+        return courseNumber;
     }
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setcourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
     }
     @Override
     public String toString() {
-        return "enrolled_in [studentId=" + studentId + ", courseId=" + courseId + "]";
+        return "enrolled_in [studentId=" + permNumber + ", courseNumber=" + courseNumber + "]";
     }
-    public enrolled_in(Long studentId, Long courseId, quarter quarter) {
-        this.studentId = studentId;
-        this.courseId = courseId;
-        this.quarter = quarter;
+    public enrolled_in(Integer permNumber, String courseNumber) {
+        this.permNumber = permNumber;
+        this.courseNumber = courseNumber;
     }
 }

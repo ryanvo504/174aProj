@@ -1,16 +1,8 @@
 package org.ivc.dbms.Main.classes;
 
 public class major {
-    private Long deptId;
     private String name;
 
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
-    }
 
     public String getName() {
         return name;
@@ -20,18 +12,13 @@ public class major {
         this.name = name;
     }
 
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("major{");
-        sb.append("deptId=").append(deptId);
-        sb.append(", name=").append(name);
-        sb.append('}');
-        return sb.toString();
+        return "major [name=" + name + "]";
     }
 
-    public major(Long deptId, String name) {
-        this.deptId = deptId;
+    public major(String name) {
         this.name = name;
     }
      
