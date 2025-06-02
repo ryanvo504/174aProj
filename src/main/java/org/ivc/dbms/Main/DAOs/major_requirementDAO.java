@@ -22,7 +22,7 @@ public class major_requirementDAO {
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, majorRequirement.getMajor());
-            pstmt.setString(2, majorRequirement.getCourseName());
+            pstmt.setString(2, majorRequirement.getcourseNumber());
             
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
