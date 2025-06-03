@@ -6,19 +6,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.ivc.dbms.Main.classes.course;
 
 public class courseDAO {
     
-    private Connection connection;
+    private final Connection connection;
 
     public courseDAO(Connection connection) {
+        if (connection == null) {
+            throw new IllegalArgumentException("Connection cannot be null");
+        }
         this.connection = connection;
     }
 
     public boolean addCourse(course course) throws SQLException {
-        String sql = "INSERT INTO Course (course_number, title) VALUES (?, ?)";
+        if (course == null) {
+            throw new IllegalArgumentException("Course cannot be null");
+        }
+        if (course.getCourseNumber() == null || course.getTitle() == null) {
+            throw new IllegalArgumentException("Course number and title cannot be null");
+        }
+
+        String sql = "INSERT INTO COURSE (course_number, title) VALUES (?, ?)";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, course.getCourseNumber());
@@ -29,35 +40,41 @@ public class courseDAO {
         }
     }
 
-    public course getCourseByCourseNumber(String courseNumber) throws SQLException {
-        String sql = "SELECT course_number, title FROM Course WHERE course_number = ?";
+    public Optional<course> getCourseByCourseNumber(String courseNumber) throws SQLException {
+        if (courseNumber == null || courseNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("Course number cannot be null or empty");
+        }
+
+        String sql = "SELECT course_number, title FROM COURSE WHERE course_number = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, courseNumber);
             
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    course course = new course();
-                    course.setCourseNumber(rs.getString("course_number"));
-                    course.setTitle(rs.getString("title"));
-                    return course;
+                    course course = new course(
+                        rs.getString("course_number"),
+                        rs.getString("title")
+                    );
+                    return Optional.of(course);
                 }
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public List<course> getAllCourses() throws SQLException {
         List<course> courses = new ArrayList<>();
-        String sql = "SELECT course_number, title FROM Course";
+        String sql = "SELECT course_number, title FROM COURSE";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             
             while (rs.next()) {
-                course course = new course();
-                course.setCourseNumber(rs.getString("course_number"));
-                course.setTitle(rs.getString("title"));
+                course course = new course(
+                    rs.getString("course_number"),
+                    rs.getString("title")
+                );
                 courses.add(course);
             }
         }
@@ -65,7 +82,14 @@ public class courseDAO {
     }
 
     public boolean updateCourse(course course) throws SQLException {
-        String sql = "UPDATE Course SET title = ? WHERE course_number = ?";
+        if (course == null) {
+            throw new IllegalArgumentException("Course cannot be null");
+        }
+        if (course.getCourseNumber() == null || course.getTitle() == null) {
+            throw new IllegalArgumentException("Course number and title cannot be null");
+        }
+
+        String sql = "UPDATE COURSE SET title = ? WHERE course_number = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, course.getTitle());
@@ -76,7 +100,11 @@ public class courseDAO {
     }
 
     public boolean deleteCourse(String courseNumber) throws SQLException {
-        String sql = "DELETE FROM Course WHERE course_number = ?";
+        if (courseNumber == null || courseNumber.trim().isEmpty()) {
+            throw new IllegalArgumentException("Course number cannot be null or empty");
+        }
+
+        String sql = "DELETE FROM COURSE WHERE course_number = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, courseNumber);
@@ -85,5 +113,4 @@ public class courseDAO {
             return rowsAffected > 0;
         }
     }
-
 }

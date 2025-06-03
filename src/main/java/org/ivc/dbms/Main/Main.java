@@ -68,19 +68,7 @@ public class Main {
             }
             System.out.println();
 
-            // 2. Get a course by course number
-            System.out.println("--- Retrieving course CS101 ---");
-            try {
-                course retrievedcourse = courseDAO.getCourseByCourseNumber("CS101");
-                if (retrievedcourse != null) {
-                    System.out.println("Retrieved course: " + retrievedcourse);
-                } else {
-                    System.out.println("course CS101 not found.");
-                }
-            } catch (SQLException e) {
-                System.err.println("Error retrieving course: " + e.getMessage());
-            }
-            System.out.println();
+            
 
             // 3. Add another course to demonstrate getAllcourses
             System.out.println("--- Adding another course (CS201) ---");
@@ -113,40 +101,9 @@ public class Main {
             }
             System.out.println();
 
-            // 5. Update a course
-            System.out.println("--- Updating course CS101 ---");
-            newcourse.setTitle("poop"); // Update the title
-            try {
-                if (courseDAO.updateCourse(newcourse)) {
-                    System.out.println("course updated: " + newcourse);
-                    // Verify update
-                    course updatedcourse = courseDAO.getCourseByCourseNumber("CS101");
-                    System.out.println("Verified updated course: " + updatedcourse);
-                } else {
-                    System.out.println("Failed to update course: " + newcourse);
-                }
-            } catch (SQLException e) {
-                System.err.println("Error updating course: " + e.getMessage());
-            }
-            System.out.println();
+          
 
-            // 6. Delete a course
-            System.out.println("--- Deleting course CS201 ---");
-            try {
-                if (courseDAO.deleteCourse("CS201")) {
-                    System.out.println("course CS201 deleted successfully.");
-                    // Verify deletion
-                    course deletedcourse = courseDAO.getCourseByCourseNumber("CS201");
-                    if (deletedcourse == null) {
-                        System.out.println("Verification: course CS201 no longer exists.");
-                    }
-                } else {
-                    System.out.println("Failed to delete course CS201.");
-                }
-            } catch (SQLException e) {
-                System.err.println("Error deleting course: " + e.getMessage());
-            }
-            System.out.println();
+            
 
             System.out.println("Demonstration complete.");
 
