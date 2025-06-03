@@ -1,4 +1,4 @@
-package org.ivc.dbms.Main;
+package org.ivc.dbms.Main.Interfaces;
 
 import java.io.File;
 import java.util.List;

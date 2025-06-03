@@ -1,7 +1,10 @@
-package org.ivc.dbms.Main;
+package org.ivc.dbms.Main.Interfaces;
 
 import java.io.*;
 import java.util.*;
+
+import org.ivc.dbms.Main.Interfaces.RegistrarStaffInterface.CourseGrade;
+
 import java.sql.*;
 
 /**
