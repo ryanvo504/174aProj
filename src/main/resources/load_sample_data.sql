@@ -1,0 +1,425 @@
+-- Insert Students
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(12345, 'Alfred Hitchcock', '6667 El Colegio #40', 'CS', 12345);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(14682, 'Billy Clinton', '5777 Hollister', 'ECE', 14682);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(37642, 'Cindy Laugher', '7000 Hollister', 'CS', 37642);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(85821, 'David Copperfill', '1357 State St', 'CS', 85821);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(38567, 'Elizabeth Sailor', '4321 State St', 'ECE', 38567);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(81934, 'Fatal Castro', '3756 La Cumbre Plaza', 'CS', 81934);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(98246, 'George Brush', '5346 Foothill Av', 'CS', 98246);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(35328, 'Hurryson Ford', '678 State St', 'ECE', 35328);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(84713, 'Ivan Lendme', '1235 Johnson Dr', 'ECE', 84713);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(36912, 'Joe Pepsi', '3210 State St', 'CS', 36912);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(46590, 'Kelvin Coster', 'Santa Cruz #3579', 'CS', 46590);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(91734, 'Li Kung', '2 People''s Rd Beijing', 'ECE', 91734);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(73521, 'Magic Jordon', '3852 Court Rd', 'CS', 73521);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(53540, 'Nam-hoi Chung', '1997 People''s St HK', 'CS', 53540);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(82452, 'Olive Stoner', '6689 El Colegio #151', 'ECE', 82452);
+
+INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
+(18221, 'Pit Wilson', '911 State St', 'ECE', 18221);
+
+-- Insert Courses
+INSERT INTO COURSE (course_number, title) VALUES
+('CS174', 'Advanced Programming');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('CS170', 'Data Structures');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('CS160', 'Computer Architecture');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('CS154', 'Digital Design');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('CS130', 'Programming Languages');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('CS026', 'Introduction to Programming');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('CS010', 'Computer Science Principles');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('EC154', 'Advanced Electronics');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('EC152', 'Digital Electronics');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('EC140', 'Circuit Analysis');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('EC015', 'Introduction to Electronics');
+
+INSERT INTO COURSE (course_number, title) VALUES
+('EC010', 'Electrical Engineering Principles');
+
+-- Insert Professors
+INSERT INTO Professor (name) VALUES ('Venus');
+INSERT INTO Professor (name) VALUES ('Jupiter');
+INSERT INTO Professor (name) VALUES ('Mercury');
+INSERT INTO Professor (name) VALUES ('Mars');
+INSERT INTO Professor (name) VALUES ('Saturn');
+INSERT INTO Professor (name) VALUES ('Gold');
+INSERT INTO Professor (name) VALUES ('Silver');
+INSERT INTO Professor (name) VALUES ('Copper');
+INSERT INTO Professor (name) VALUES ('Iron');
+INSERT INTO Professor (name) VALUES ('Tin');
+INSERT INTO Professor (name) VALUES ('Star');
+
+-- Insert Buildings
+INSERT INTO Building (building_code) VALUES ('Psycho');
+INSERT INTO Building (building_code) VALUES ('English');
+INSERT INTO Building (building_code) VALUES ('Engr');
+INSERT INTO Building (building_code) VALUES ('Bio');
+INSERT INTO Building (building_code) VALUES ('Maths');
+INSERT INTO Building (building_code) VALUES ('Chem');
+
+-- Insert Quarters
+INSERT INTO Quarter (quarter_yr) VALUES ('25 S');
+INSERT INTO Quarter (quarter_yr) VALUES ('25 W');
+INSERT INTO Quarter (quarter_yr) VALUES ('24 F');
+INSERT INTO Quarter (quarter_yr) VALUES ('24 S');
+
+-- Insert Course Offerings (Spring 2025)
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(12345, '25 S', 'Venus', 'Psycho', 1132, 'TR10-12', 5);
+
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(54321, '25 S', 'Jupiter', 'English', 1124, 'MWF10-11', 8);
+
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(41725, '25 S', 'Mercury', 'Engr', 1132, 'MWF2-3', 5);
+
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(76543, '25 S', 'Mars', 'Bio', 2222, 'MWF2-3', 5);
+
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(93156, '25 S', 'Saturn', 'Maths', 3333, 'T3-5', 7);
+
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(19023, '25 S', 'Gold', 'Chem', 1234, 'TR1-3', 10);
+
+INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code, room_num, time, max_enrollment) VALUES
+(71631, '25 S', 'Silver', 'Engr', 2116, 'MW11-1', 5);
+
+-- Insert Prerequisites
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('CS174', 'CS130');
+
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('CS174', 'CS026');
+
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('CS170', 'CS130');
+
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('CS170', 'CS154');
+
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('CS160', 'CS026');
+
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('EC154', 'CS026');
+
+INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
+('EC154', 'EC152');
+
+-- Insert Major Requirements
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
+('CS', 'CS026');
+
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
+('CS', 'CS130');
+
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
+('CS', 'CS154');
+
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
+('CS', 'CS160');
+
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
+('CS', 'CS170');
+
+-- Insert Electives
+INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
+('CS', 'CS010');
+
+INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
+('CS', 'EC010');
+
+INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
+('CS', 'EC015');
+
+INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
+('CS', 'EC140');
+
+INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
+('CS', 'EC152');
+
+INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
+('CS', 'EC154');
+
+-- Insert Enrollments (Spring 2025)
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(12345, 'CS174');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(12345, 'CS170');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(12345, 'CS160');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(37642, 'EC154');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(37642, 'CS160');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(85821, 'CS174');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(85821, 'CS160');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(38567, 'CS174');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(38567, 'CS170');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(38567, 'CS160');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(81934, 'EC154');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(98246, 'CS160');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(98246, 'CS174');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(98246, 'CS170');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(98246, 'EC154');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(35328, 'CS174');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(53540, 'CS170');
+
+INSERT INTO ENROLLED_IN (PERM_NUMBER, COURSE_NUMBER) VALUES
+(82452, 'EC154');
+
+-- Insert Completed Courses with Grades
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'CS154', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'CS130', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'EC154', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'CS026', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'CS010', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'EC152', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'EC015', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(12345, 'EC010', '24 S', 'A');
+
+-- Billy Clinton's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'CS160', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'CS130', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'CS026', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'CS010', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'EC152', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'EC015', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(14682, 'EC010', '24 S', 'A');
+
+-- Cindy Laugher's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(37642, 'EC152', '24 S', 'C');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(37642, 'CS130', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(37642, 'EC015', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(37642, 'EC010', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(37642, 'CS026', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(37642, 'CS010', '24 S', 'A');
+
+-- David Copperfill's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(85821, 'CS130', '24 S', 'C');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(85821, 'CS026', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(85821, 'CS010', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(85821, 'EC015', '24 S', 'B');
+
+-- Elizabeth Sailor's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'EC154', '24 S', 'C');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'CS130', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'EC152', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'CS154', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'CS026', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'CS010', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(38567, 'EC010', '24 S', 'B');
+
+-- Fatal Castro's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(81934, 'CS154', '24 S', 'C');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(81934, 'CS130', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(81934, 'CS026', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(81934, 'EC152', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(81934, 'CS010', '24 S', 'A');
+
+-- George Brush's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(98246, 'CS154', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(98246, 'CS130', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(98246, 'CS026', '24 S', 'A');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(98246, 'CS010', '24 S', 'B');
+
+-- Hurryson Ford's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(35328, 'CS130', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(35328, 'CS026', '24 S', 'B');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(35328, 'CS010', '24 S', 'A');
+
+-- Ivan Lendme's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(84713, 'CS026', '24 S', 'D');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(84713, 'EC015', '24 S', 'F');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(84713, 'CS010', '24 S', 'C');
+
+-- Kelvin Coster's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(46590, 'CS026', '24 S', 'A');
+
+-- Li Kung's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(91734, 'CS026', '24 S', 'A');
+
+-- Magic Jordon's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(73521, 'CS026', '24 S', 'B');
+
+-- Nam-hoi Chung's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(53540, 'CS154', '24 S', 'D');
+
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(53540, 'CS130', '24 S', 'C');
+
+-- Olive Stoner's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(82452, 'EC152', '24 S', 'C');
+
+-- Pit Wilson's completed courses
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(18221, 'CS130', '24 S', 'B');
+INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES
+(18221, 'CS026', '24 S', 'B'); 

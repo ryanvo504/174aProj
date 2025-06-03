@@ -1,0 +1,189 @@
+Part 1: Students, Courses, Courses taken
+
+Current quarter is Spring, 2025.
+
+Student
+perm	name			address			dept	pin
+12345	Alfred Hitchcock	6667 El Colegio #40	CS	12345
+14682	Billy Clinton		5777 Hollister		ECE	14682
+37642	Cindy Laugher		7000 Hollister		CS	37642
+85821	David Copperfill	1357 State St		CS	85821
+38567	Elizabeth Sailor	4321 State St		ECE	38567
+81934	Fatal Castro		3756 La Cumbre Plaza	CS	81934
+98246	George Brush		5346 Foothill Av	CS	98246
+35328	Hurryson Ford		678 State St		ECE	35328
+84713	Ivan Lendme		1235 Johnson Dr		ECE	84713
+36912	Joe Pepsi		3210 State St		CS	36912
+46590	Kelvin Coster		Santa Cruz #3579	CS	46590
+91734	Li Kung			2 People's Rd Beijing	ECE	91734
+73521	Magic Jordon		3852 Court Rd		CS	73521
+53540	Nam-hoi Chung		1997 People's St HK	CS	53540
+82452	Olive Stoner		6689 El Colegio #151	ECE	82452
+18221	Pit Wilson		911 State St		ECE	18221
+
+
+Course
+code	enroll	yr/qtr	prof	cap	time/loc		prereq
+CS174	12345	25 S	Venus	5	TR10-12 Psycho 1132	CS130 CS026
+CS170	54321	25 S	Jupiter	8	MWF10-11 English 1124	CS130 CS154
+CS160	41725	25 S	Mercury	5	MWF2-3 Engr 1132	CS026
+CS026	76543	25 S	Mars	5	MWF2-3 Bio 2222		-
+EC154	93156	25 S	Saturn	7	T3-5 Maths 3333		CS026 EC152
+EC140	19023	25 S	Gold	10	TR1-3 Chem 1234		-
+EC015	71631	25 S	Silver	5	MW11-1 Engr 2116	-
+
+CS170	54321	25 W	Copper	18	MWF10-11 English 1124	CS130 CS154
+CS160	41725	25 W	Iron	15	MWF2-3 Engr 1132	CS026
+CS154	32165	25 W	Tin	10	MF8-9 Engr 2116		-
+CS130	56789	25 W	Star	15	TR2-4 Chem 1111		-
+CS026	76543	25 W	Tin	15	MWF2-3 Bio 2222		-
+EC154	93156	25 W	Saturn	18	T3-5 Maths 3333		CS026 EC152
+EC152	91823	25 W	Gold	10	MW11-1 Engr 3163	-
+
+CS170	54321	24 F	Copper	15	MWF10-11 English 1124	CS130 CS154
+CS160	41725	24 F	Mercury	10	MWF2-3 Engr 1132	CS026
+CS154	32165	24 F	Mars	10	MWF8-9 Engr 2116	-
+CS130	56789	24 F	Jupiter	15	TR2-4 Chem 1111		-
+CS026	76543	24 F	Tin	15	MWF2-3 Bio 2222		-
+CS010	81623	24 F	Gold	10	MWR3-4 Chem 3333	-
+EC154	93156	24 F	Silver	10	T3-5 Maths 3333		CS026 EC152
+EC152	91823	24 F	Sun	10	MW11-1 Engr 3163	-
+EC015	71631	24 F	Moon	15	TR2-4 Engr 1124		-
+EC010	82612	24 F	Earth	15	MWF8-9 Physics 4004	-
+
+CS130	56789	24 S	Mercury	15	TR2-4 Chem 1111		-
+CS026	76543	24 S	Mars	15	MWF2-3 Bio 2222		-
+CS010	81623	24 S	Gold	10	MWR3-4 Chem 3333	-
+EC152	91823	24 S	Iron	12	MW11-1 Engr 3163	-
+EC015	71631	24 S	Moon	15	TR2-4 Engr 1124		-
+EC010	82612	24 S	Star	15	MWF8-9 Physics 4004	-
+
+
+
+Current and past enrollment/grades
+
+Alfred Hitchcock
+To take:	CS170 CS160
+Taken:	25W	CS154 A CS130 B EC154		24F	CS026 A CS010 A  24S EC152 A EC015 A EC010 A
+
+Billy Clinton
+To take:	-
+Taken:	25W	CS160 B CS130 B		24F	CS026 B CS010 A  24S EC152 A EC015 A EC010 A
+
+Cindy Laugher
+To take:	EC154 CS160
+Taken:	25W	EC152 C CS130 B		24F	EC015 B EC010 A
+	24S	CS026 A CS010 A
+
+David Copperfill
+To take:	CS174 CS160
+Taken:	25W	CS130 C CS026 A		24F	CS010 A EC015 B
+
+Elizabeth Sailor
+To take:	CS174 CS170 CS160
+Taken:	25W	EC154 C CS130 A		24F 	EC152 B CS154 B
+	24S	CS026 A CS010 A EC010 B
+
+Fatal Castro
+To take:	EC154
+Taken:	25W	CS154 C CS130 A		24F 	CS026 A EC152 B
+	24S	CS10 A
+
+George Brush
+To take:	CS160 CS174 CS170 EC154
+Taken:	25W -	24F	CS154 A CS130 B CS026 A		24S	CS010 B
+
+Hurryson Ford
+To take:	CS174
+Taken:	25W -	24F	CS130 B CS026 A		24S	CS010 A
+
+Ivan Lendme
+To take:	-
+Taken:	25W	CS026 D		24F	EC015 F CS010 C
+
+Joe Pepsi
+To take:	-
+Taken:	-
+
+Kelvin Coster
+To take:	-
+Taken:	25W	CS026 A
+
+Li Kung
+To take:	-
+Taken:	25W	CS026 A
+
+Magic Jordon
+To take:	-
+Taken:	25W	CS026 B
+
+Nam-hoi Chung
+To take:	CS170
+Taken:	25W	CS154 D CS130 C
+
+Olive Stoner
+To take:	EC154
+Taken:	25W	EC152 C
+
+Pit Wilson
+To take:	CS174
+Taken:	25W	CS130 B CS026 B
+
+
+
+Testing Transactions:
+1. Reg: drop EC154 for Cindy Laugher
+2. Reg: add CS160 for Fatal Castro
+3. Reg: add EC015 for Joe Pepsi
+4. Reg: drop CS174 for Alfred Hitchcock
+5. Reg: add CS160 for Hurryson Ford
+6. Reg: drop CS160 for Cindy Laugher
+7. Reg: generate class list for CS160
+8. RBT: Billy Clinton lists current courses
+9. RBT: Billy Clinton listens to the grades of courses enrolled
+        in Fall, 2024
+10.RBT: David Copperfill wants to change PIN to 54321 (entering an invalid
+        PIN in the first attempt and a valid one in second)
+11.RBT: David Copperfill uses new PIN to drop cs174
+12.RBT: David Copperfill lists current courses
+13.Reg: generate class list for CS174
+
+Note grade entering and mailer generation will be included in the
+unknown testing transactions.
+
+
+
+Part 2: Yearly course offerings
+
+Course	        Summer 2025		Fall 2025	Winter 2026		Spring 2026
+CS174	        Miller, David	     		    	   		        Miller, David
+CS170	        Patel, Priya							Thomas, Gary
+CS160	        Green, David		Thomas, Gary	Patel, Priya		Hill, Laura
+CS026	             			Wilson, Sarah	Lopez, Maria
+EC154		Lopez, Maria							Adams, Emily
+EC140		       			Scott, Paul	Moore, Kevin		Jackson, Anna
+EC015		Rodriguez, James	White, James	Adams, Emily		Robinson, Frank
+CS154		Moore, Kevin		Kim, Michael	Lewis, Sarah		Wright, Kevin
+CS130		Young, Nancy		     		       			Martinez, Patricia
+EC152		Garcia, Linda		Johnson, Mary				Moore, Kevin
+CS010		       			Taylor, Brian				Jackson, Anna
+EC010					       		Green, David		Williams, Robert
+
+
+
+Part 3: Major (program) requirements
+
+Required courses (all 5 listed)
+CS026
+CS130
+CS154
+CS160
+CS170
+
+Eligible electives (choose 5)
+CS010
+EC010
+EC015
+EC140
+EC152
+EC154
