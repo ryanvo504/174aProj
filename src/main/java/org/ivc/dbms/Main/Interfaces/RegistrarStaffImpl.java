@@ -67,19 +67,26 @@ public class RegistrarStaffImpl implements RegistrarStaffInterface {
     public List<CourseGrade> listPreviousQuarterGrades(String studentId) {
         List<CourseGrade> grades = new ArrayList<>();
         try {
-            String sql = "SELECT c.course_number, g.grade, c.quarter " +
-                        "FROM grades g " +
-                        "JOIN Course c ON g.course_number = c.course_number " +
-                        "WHERE g.perm_number = ? AND c.quarter = " +
-                        "(SELECT MAX(quarter) FROM Course)";
+            // Get the most recent quarter for this student
+            String quarterSql = "SELECT MAX(QUARTER) AS MAX_QUARTER FROM HAS_COMPLETED WHERE STUDENT_ID = ?";
+            PreparedStatement quarterStmt = dbConnection.prepareStatement(quarterSql);
+            quarterStmt.setInt(1, Integer.parseInt(studentId));
+            ResultSet quarterRs = quarterStmt.executeQuery();
+            String maxQuarter = null;
+            if (quarterRs.next()) {
+                maxQuarter = quarterRs.getString("MAX_QUARTER");
+            }
+            if (maxQuarter == null) return grades;
+            String sql = "SELECT h.COURSE_ID, h.GRADE, h.QUARTER FROM HAS_COMPLETED h WHERE h.STUDENT_ID = ? AND h.QUARTER = ?";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
             stmt.setInt(1, Integer.parseInt(studentId));
+            stmt.setString(2, maxQuarter);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 grades.add(new CourseGrade(
-                    rs.getString("course_number"),
-                    rs.getString("grade"),
-                    rs.getString("quarter")
+                    rs.getString("COURSE_ID"),
+                    rs.getString("GRADE"),
+                    rs.getString("QUARTER")
                 ));
             }
         } catch (SQLException e) {
@@ -110,18 +117,19 @@ public class RegistrarStaffImpl implements RegistrarStaffInterface {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(gradeFile));
             String line;
-            String sql = "INSERT INTO grades (perm_number, course_number, grade) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO HAS_COMPLETED (STUDENT_ID, COURSE_ID, QUARTER, GRADE) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
-            
+            // For demo, use a fixed quarter or fetch the current one as needed
+            String currentQuarter = "25 W";
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 2) {
                     String studentId = parts[0].trim();
                     String grade = parts[1].trim();
-                    
                     stmt.setInt(1, Integer.parseInt(studentId));
                     stmt.setString(2, courseId);
-                    stmt.setString(3, grade);
+                    stmt.setString(3, currentQuarter);
+                    stmt.setString(4, grade);
                     stmt.executeUpdate();
                 }
             }
@@ -137,18 +145,17 @@ public class RegistrarStaffImpl implements RegistrarStaffInterface {
     public String requestTranscript(String studentId) {
         StringBuilder transcript = new StringBuilder();
         try {
-            String sql = "SELECT c.course_number, c.title, g.grade, c.quarter " +
-                        "FROM grades g " +
-                        "JOIN Course c ON g.course_number = c.course_number " +
-                        "WHERE g.perm_number = ? " +
-                        "ORDER BY c.quarter, c.course_number";
+            String sql = "SELECT h.COURSE_ID, c.TITLE, h.GRADE, h.QUARTER " +
+                        "FROM HAS_COMPLETED h " +
+                        "JOIN COURSE c ON h.COURSE_ID = c.COURSE_NUMBER " +
+                        "WHERE h.STUDENT_ID = ? " +
+                        "ORDER BY h.QUARTER, h.COURSE_ID";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
             stmt.setInt(1, Integer.parseInt(studentId));
             ResultSet rs = stmt.executeQuery();
-            
             String currentQuarter = null;
             while (rs.next()) {
-                String quarter = rs.getString("quarter");
+                String quarter = rs.getString("QUARTER");
                 if (!quarter.equals(currentQuarter)) {
                     if (currentQuarter != null) {
                         transcript.append("\n");
@@ -157,9 +164,9 @@ public class RegistrarStaffImpl implements RegistrarStaffInterface {
                     currentQuarter = quarter;
                 }
                 transcript.append(String.format("%s - %s: %s\n",
-                    rs.getString("course_number"),
-                    rs.getString("title"),
-                    rs.getString("grade")));
+                    rs.getString("COURSE_ID"),
+                    rs.getString("TITLE"),
+                    rs.getString("GRADE")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -170,14 +177,12 @@ public class RegistrarStaffImpl implements RegistrarStaffInterface {
     @Override
     public boolean generateGradeMailers() {
         try {
-            String sql = "SELECT DISTINCT PERM_NUMBER FROM ENROLLED_IN";
+            String sql = "SELECT DISTINCT STUDENT_ID FROM HAS_COMPLETED";
             PreparedStatement stmt = dbConnection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            
             while (rs.next()) {
-                String studentId = rs.getString("PERM_NUMBER");
+                String studentId = rs.getString("STUDENT_ID");
                 String transcript = requestTranscript(studentId);
-                // Here you would typically write the transcript to a file or send it via email
                 // For now, we'll just print it to console
                 System.out.println("Grade mailer for student " + studentId + ":\n" + transcript);
             }

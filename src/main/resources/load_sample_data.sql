@@ -1,88 +1,34 @@
 -- Insert Students
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(12345, 'Alfred Hitchcock', '6667 El Colegio #40', 'CS', 12345);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(14682, 'Billy Clinton', '5777 Hollister', 'ECE', 14682);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(37642, 'Cindy Laugher', '7000 Hollister', 'CS', 37642);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(85821, 'David Copperfill', '1357 State St', 'CS', 85821);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(38567, 'Elizabeth Sailor', '4321 State St', 'ECE', 38567);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(81934, 'Fatal Castro', '3756 La Cumbre Plaza', 'CS', 81934);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(98246, 'George Brush', '5346 Foothill Av', 'CS', 98246);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(35328, 'Hurryson Ford', '678 State St', 'ECE', 35328);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(84713, 'Ivan Lendme', '1235 Johnson Dr', 'ECE', 84713);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(36912, 'Joe Pepsi', '3210 State St', 'CS', 36912);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(46590, 'Kelvin Coster', 'Santa Cruz #3579', 'CS', 46590);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(91734, 'Li Kung', '2 People''s Rd Beijing', 'ECE', 91734);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(73521, 'Magic Jordon', '3852 Court Rd', 'CS', 73521);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(53540, 'Nam-hoi Chung', '1997 People''s St HK', 'CS', 53540);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(82452, 'Olive Stoner', '6689 El Colegio #151', 'ECE', 82452);
-
-INSERT INTO students (Perm_Number, Name, Address, Dept, Pin) VALUES
-(18221, 'Pit Wilson', '911 State St', 'ECE', 18221);
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (12345, 12345, 'Alfred Hitchcock', '6667 El Colegio #40', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (14682, 14682, 'Billy Clinton', '5777 Hollister', 'ECE');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (37642, 37642, 'Cindy Laugher', '7000 Hollister', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (85821, 85821, 'David Copperfill', '1357 State St', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (38567, 38567, 'Elizabeth Sailor', '4321 State St', 'ECE');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (81934, 81934, 'Fatal Castro', '3756 La Cumbre Plaza', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (98246, 98246, 'George Brush', '5346 Foothill Av', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (35328, 35328, 'Hurryson Ford', '678 State St', 'ECE');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (84713, 84713, 'Ivan Lendme', '1235 Johnson Dr', 'ECE');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (36912, 36912, 'Joe Pepsi', '3210 State St', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (46590, 46590, 'Kelvin Coster', 'Santa Cruz #3579', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (91734, 91734, 'Li Kung', '2 People''s Rd Beijing', 'ECE');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (73521, 73521, 'Magic Jordon', '3852 Court Rd', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (53540, 53540, 'Nam-hoi Chung', '1997 People''s St HK', 'CS');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (82452, 82452, 'Olive Stoner', '6689 El Colegio #151', 'ECE');
+INSERT INTO STUDENTS (PERM_NUMBER, PIN, NAME, ADDRESS, DEPT) VALUES (18221, 18221, 'Pit Wilson', '911 State St', 'ECE');
 
 -- Insert Courses
-INSERT INTO COURSE (course_number, title) VALUES
-('CS174', 'Advanced Programming');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('CS170', 'Data Structures');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('CS160', 'Computer Architecture');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('CS154', 'Digital Design');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('CS130', 'Programming Languages');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('CS026', 'Introduction to Programming');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('CS010', 'Computer Science Principles');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('EC154', 'Advanced Electronics');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('EC152', 'Digital Electronics');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('EC140', 'Circuit Analysis');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('EC015', 'Introduction to Electronics');
-
-INSERT INTO COURSE (course_number, title) VALUES
-('EC010', 'Electrical Engineering Principles');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS174', 'Advanced Programming');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS170', 'Data Structures');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS160', 'Computer Architecture');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS154', 'Digital Design');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS130', 'Programming Languages');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS026', 'Introduction to Programming');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('CS010', 'Computer Science Principles');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('EC154', 'Advanced Electronics');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('EC152', 'Digital Electronics');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('EC140', 'Circuit Analysis');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('EC015', 'Introduction to Electronics');
+INSERT INTO COURSE (COURSE_NUMBER, TITLE) VALUES ('EC010', 'Electrical Engineering Principles');
 
 -- Insert Professors
 INSERT INTO Professor (name) VALUES ('Venus');
@@ -134,42 +80,20 @@ INSERT INTO Offered (enrollment_code, quarter_yr, professor_name, building_code,
 (71631, '25 S', 'Silver', 'Engr', 2116, 'MW11-1', 5);
 
 -- Insert Prerequisites
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('CS174', 'CS130');
-
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('CS174', 'CS026');
-
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('CS170', 'CS130');
-
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('CS170', 'CS154');
-
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('CS160', 'CS026');
-
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('EC154', 'CS026');
-
-INSERT INTO prerequisite (course_number, prerequisite_number) VALUES
-('EC154', 'EC152');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('CS174', 'CS130');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('CS174', 'CS026');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('CS170', 'CS130');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('CS170', 'CS154');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('CS160', 'CS026');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('EC154', 'CS026');
+INSERT INTO PREREQUISITE (COURSE_NUMBER, PREREQUISITE_NUMBER) VALUES ('EC154', 'EC152');
 
 -- Insert Major Requirements
-INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
-('CS', 'CS026');
-
-INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
-('CS', 'CS130');
-
-INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
-('CS', 'CS154');
-
-INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
-('CS', 'CS160');
-
-INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES
-('CS', 'CS170');
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES ('CS', 'CS026');
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES ('CS', 'CS130');
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES ('CS', 'CS154');
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES ('CS', 'CS160');
+INSERT INTO MAJOR_REQUIREMENTS (MAJOR, COURSE_NUMBER) VALUES ('CS', 'CS170');
 
 -- Insert Electives
 INSERT INTO MAJOR_ELECTIVE (MAJOR_NAME, COURSE_NUMBER) VALUES
