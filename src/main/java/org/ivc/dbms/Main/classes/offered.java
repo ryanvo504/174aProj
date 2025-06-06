@@ -5,7 +5,7 @@ public class offered {
     public offered() {
     }
 
-    public offered(int enrollmentCode, quarter quarter, professor professor, building building, int roomNum, String time, int maxEnrollment) {
+    public offered(int enrollmentCode, quarter quarter, professor professor, building building, int roomNum, String time, int maxEnrollment, String courseNumber) {
         this.enrollmentCode = enrollmentCode;
         this.quarter = quarter;
         this.professor = professor;
@@ -13,6 +13,7 @@ public class offered {
         this.roomNum = roomNum;
         this.time = time;
         this.maxEnrollment = maxEnrollment;
+        this.courseNumber = courseNumber;
     }
 
     private int enrollmentCode;
@@ -22,7 +23,7 @@ public class offered {
     private int roomNum;
     private String time;
     private int maxEnrollment;
-
+    private String courseNumber;
     public int getEnrollmentCode() {
         return enrollmentCode;
     }
@@ -72,6 +73,13 @@ public class offered {
     }
     public void setMaxEnrollment(int maxEnrollment) {
         this.maxEnrollment = maxEnrollment;
+    }
+
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+    public void setCourseNumber(String courseNumber){
+        this.courseNumber = courseNumber;
     }
 
 }

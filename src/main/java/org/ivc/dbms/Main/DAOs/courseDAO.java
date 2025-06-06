@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.ivc.dbms.Main.classes.course;
 
@@ -29,7 +30,7 @@ public class courseDAO {
         }
     }
 
-    public course getCourseByCourseNumber(String courseNumber) throws SQLException {
+    public Optional<course> getCourseByCourseNumber(String courseNumber) throws SQLException {
         String sql = "SELECT course_number, title FROM Course WHERE course_number = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -40,7 +41,7 @@ public class courseDAO {
                     course course = new course();
                     course.setCourseNumber(rs.getString("course_number"));
                     course.setTitle(rs.getString("title"));
-                    return course;
+                    return Optional.of(course);
                 }
             }
         }

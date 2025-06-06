@@ -20,17 +20,20 @@
 
  package org.ivc.dbms.Main;
 
+import java.io.IOException;
  import java.sql.Connection;
  import java.sql.DatabaseMetaData;
  import java.sql.ResultSet;
  import java.sql.SQLException;
  import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
+import java.util.Scanner;
 
-import org.ivc.dbms.Main.DAOs.courseDAO;
-import org.ivc.dbms.Main.classes.course;
+import org.ivc.dbms.Main.DAOs.studentDAO;
+import org.ivc.dbms.Main.Interfaces.Gold;
+import org.ivc.dbms.Main.Interfaces.Registrar;
+import org.ivc.dbms.Main.classes.student;
 
 import oracle.jdbc.OracleConnection;
 import oracle.jdbc.pool.OracleDataSource;
@@ -50,6 +53,9 @@ import oracle.jdbc.pool.OracleDataSource;
  
      // This method creates a database connection using
      // oracle.jdbc.pool.OracleDataSource.
+
+
+
         public static void main(String args[]) throws SQLException {
             Properties info = new Properties();
             System.out.println(DB_URL);
@@ -60,44 +66,243 @@ import oracle.jdbc.pool.OracleDataSource;
             info.put(OracleConnection.CONNECTION_PROPERTY_PASSWORD, DB_PASSWORD);
             info.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "20");
     
-            System.out.println("Creating OracleDataSource...");
+            //System.out.println("Creating OracleDataSource...");
             OracleDataSource ods = new OracleDataSource();
     
-            System.out.println("Setting connection properties...");
+            //System.out.println("Setting connection properties...");
             ods.setURL(DB_URL);
             ods.setConnectionProperties(info);
     
             // With AutoCloseable, the connection is closed automatically
             try (OracleConnection connection = (OracleConnection) ods.getConnection()) {
-                System.out.println("Connection established!");
+               // System.out.println("Connection established!");
                 // Get JDBC driver name and version
                 DatabaseMetaData dbmd = connection.getMetaData();
-                System.out.println("Driver Name: " + dbmd.getDriverName());
-                System.out.println("Driver Version: " + dbmd.getDriverVersion());
+                //System.out.println("Driver Name: " + dbmd.getDriverName());
+               // System.out.println("Driver Version: " + dbmd.getDriverVersion());
                 // Print some connection properties
                 System.out.println(
                     "Default Row Prefetch Value: " + connection.getDefaultRowPrefetch()
                 );
-                System.out.println("Database username: " + connection.getUserName());
-                System.out.println();
+                //System.out.println("Database username: " + connection.getUserName());
+                //System.out.println();
                 // Perform some database operations
-
+                System.out.println("Select an Interface to test:\n1) Gold\n2) Registrar\n");
+                int selection = 1;
+                Scanner scanner = new Scanner(System.in);
+                selection = scanner.nextInt();
+                
+                switch (selection) {
+                    case 1 -> GoldInterface(connection);
+                    case 2 -> RegistrarInterface(connection);
+                    default -> System.out.println("Invalid selection.");
+                }
             } catch (Exception e) {
                 System.out.println("CONNECTION ERROR:");
                 System.out.println(e);
             }
 
-            Connection connection = ods.getConnection();
-
-            List<course> courses = new ArrayList<>();
-            courses.add(new course("ECE154", "Architecture"));
-            courseDAO courseDAO = new courseDAO(connection);
-            for(course Course : courses){
-                courseDAO.addCourse(Course);
+        }
+    
+     public static void GoldInterface(Connection connection) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+        int studentId;
+        int pin;
+        System.out.println("Welcome to Gold\nPlease enter your student ID and pin (one at a time):");
+        studentId = scanner.nextInt();
+        pin = scanner.nextInt();
+        studentDAO studentDAO = new studentDAO(connection);
+        Optional<student> student = studentDAO.getStudentByPermNumberAndPin(studentId, pin);
+        if(student.isEmpty()){
+            System.out.println("Invalid student ID or pin");
+            return;
+        }
+        
+        System.out.println("You have successfully logged in as student: " + student.get().getName());
+        System.out.println("""
+            Gold Interface:
+            1.) Add Course
+            2.) drop Course
+            3.) List Enrolled Courses
+            4.) List Grads From Quarter
+            5.) Requirement Check
+            6.) Make Graduation Plan
+            7.) Change Pin
+            0.) Exit Gold Interface"""
+            );        
+        
+        
+        int selection;
+        selection = scanner.nextInt();
+        Gold gold = new Gold(connection);
+        while(selection != 0){
+            switch (selection) {
+                case 1 ->                     {
+                        System.out.println("Enter code, quarter,year (one at a time)");
+                        int code = scanner.nextInt();
+                        String quarter = scanner.next();
+                        String year = scanner.next();
+                        gold.addCourse(studentId, pin, code, year + " " + quarter);
+                    }
+                case 2 ->                     {
+                        System.out.println("code, quarter,year (one at a time)");
+                        int code = scanner.nextInt();
+                        String quarter = scanner.next();
+                        String year = scanner.next();
+                        gold.dropCourse(studentId, pin, code, year + " " + quarter);
+                    }
+                case 3 ->                     {
+                        System.out.println("Enter Quarter, year (one at a time)");
+                        String quarter = scanner.next();
+                        String year = scanner.next();
+                        gold.viewSchedule(studentId, pin, year + " " + quarter);
+                    }
+                case 4 -> {
+                        System.out.println("Enter Quarter, year (one at a time)");
+                        String quarter = scanner.next();
+                        String year = scanner.next();
+                        gold.ViewQuarter(studentId, pin, year + " " + quarter);
+                }
+                case 5 -> {
+                        gold.viewRequirements(studentId, pin);
+                }
+                case 6 -> {
+                    gold.generatePlan(studentId, pin);
+                }
+                case 7 -> {
+                    System.out.println("Enter new pin:");
+                    Integer newPin = scanner.nextInt();
+                    gold.changePin(studentId, pin, newPin);
+                    pin = newPin; // Update pin for further operations
+                }
+                default -> System.out.println("Invalid selection.");
             }
             
+            System.out.println("""
+
+
+            Gold Interface:
+            1.) Add Course
+            2.) drop Course
+            3.) List Enrolled Courses
+            4.) List Grads From Quarter
+            5.) Requirement Check
+            6.) Make Graduation Plan
+            7.) Change Pin
+            0.) Exit Gold Interface"""
+            );
+            selection = scanner.nextInt();
+
         }
 
+        System.out.println("Exiting Gold Interface.");
+     }
+  
+
+     public static void RegistrarInterface(Connection connection) throws SQLException, IOException {
+        Scanner scanner = new Scanner(System.in);
+        Registrar registar = new Registrar(connection);
+        int selection = 1;
+        System.out.println("Welcome to Registrar Interface\nPlease enter your selection:");
+
+            System.out.println("""
+                               Registrar Interface:
+                               1.) Add Student
+                               2.) Drop Student
+                               3.) List student Enrollments
+                               4.) List Student Grades
+                               5.) Generate class list
+                               6.) Enter Grades
+                               7.) Transcript
+                               8.) Mail Grades
+                               0.) Exit Registrar Interface""");
+            selection = scanner.nextInt();
+
+        while(selection != 0){
+
+            switch (selection) {
+                case 1 -> {
+                    System.out.println("Enter student_Id, enrollment code, quarter year");
+                    int id = scanner.nextInt();
+                    int enrollmentCode = scanner.nextInt();
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+                    registar.addStudentToCourse(id, enrollmentCode, year + " " + quarter);
+                }
+                case 2 -> {
+                    System.out.println("Enter student_Id, enrollment code, quarter, year");
+                    int id = scanner.nextInt();
+                    int enrollmentCode = scanner.nextInt();
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+                    registar.dropStudentFromCourse(id, enrollmentCode, year + " " + quarter);
+                }
+                case 3 -> {
+                    System.out.println("Enter student_id, quarter, year");
+                    int id = scanner.nextInt();
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+                    registar.listStudentCourses(id, year + " " + quarter);
+                }
+                case 4 -> {
+                    System.out.println("Enter student_id, quarter, year");
+                    int id = scanner.nextInt();
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+                    registar.listPreviousQuarterGrades(id, year + " " + quarter);
+                }
+                case 5 -> {
+                    System.out.println("Enter enrollment code, quarter, year");
+                    int enrollmentCode = scanner.nextInt();
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+                    registar.generateClassList(enrollmentCode, year + " " + quarter);
+                }
+                case 6 ->{
+                    System.out.println("Enter enrollment code, quarter, year, fileName");
+                    int enrollmentCode = scanner.nextInt();
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+                    String file = scanner.next();
+
+                    registar.enterGradesFromFile(enrollmentCode, year + " " + quarter, file);
+                }
+                case 7 -> {
+                    System.out.println("Enter student_id");
+                    int id = scanner.nextInt();
+                    registar.requestTranscript(id);
+                }
+                case 8 -> {
+                    System.out.println("Enter Quarter, year");
+                    String quarter = scanner.next();
+                    String year = scanner.next();
+
+                    registar.generateGradeMailers(year + " " + quarter);
+                }
+                case 0 -> System.out.println("Exiting Registrar Interface.");
+                default -> System.out.println("Invalid selection.");
+            }
+
+            System.out.println("""
+                               Registrar Interface:
+                               1.) Add Student
+                               2.) Drop Student
+                               3.) List student Enrollments
+                               4.) List Student Grades
+                               5.) Generate class list
+                               6.) Enter Grades
+                               7.) Transcript
+                               8.) Mail Grades
+                               0.) Exit Registrar Interface""");
+            selection = scanner.nextInt();
+        }
+
+
+    }
+  
+  
+  
+  
      // Inserts another TA into the Instructors table.
      public static void insertTA(Connection connection) throws SQLException {
          System.out.println("Preparing to insert TA into Instructors table...");

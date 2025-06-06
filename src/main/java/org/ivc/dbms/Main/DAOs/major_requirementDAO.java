@@ -18,7 +18,7 @@ public class major_requirementDAO {
     }
 
     public boolean addMajorRequirement(major_requirement majorRequirement) throws SQLException {
-        String sql = "INSERT INTO major_requirement (major, course_name) VALUES (?, ?)";
+        String sql = "INSERT INTO major_requirements (major, course_number) VALUES (?, ?)";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, majorRequirement.getMajor());
@@ -32,7 +32,7 @@ public class major_requirementDAO {
 
     public List<major_requirement> getMajorRequirementsByMajor(String major) throws SQLException {
         List<major_requirement> majorRequirements = new ArrayList<>();
-        String sql = "SELECT major, course_name FROM major_requirement WHERE major = ?";
+        String sql = "SELECT major, course_number FROM major_requirements WHERE major = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, major);
@@ -41,7 +41,7 @@ public class major_requirementDAO {
                 while (rs.next()) {
                     major_requirement majorRequirement = new major_requirement(
                         rs.getString("major"), 
-                        rs.getString("course_name"));
+                        rs.getString("course_number"));
                     
                     majorRequirements.add(majorRequirement);
                 }
@@ -52,7 +52,7 @@ public class major_requirementDAO {
 
     public List<major_requirement> getAllMajorRequirements() throws SQLException {
         List<major_requirement> majorRequirements = new ArrayList<>();
-        String sql = "SELECT majorId, courseId FROM major_requirement";
+        String sql = "SELECT major, course_number FROM major_requirements";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
@@ -70,7 +70,7 @@ public class major_requirementDAO {
 
 
     public boolean deleteMajorRequirement(String courseId) throws SQLException {
-        String sql = "DELETE FROM major_requirement WHERE courseId = ?";
+        String sql = "DELETE FROM major_requirements WHERE courseId = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, courseId);

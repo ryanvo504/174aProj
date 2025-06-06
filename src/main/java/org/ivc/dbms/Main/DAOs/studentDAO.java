@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.ivc.dbms.Main.classes.student;
 
@@ -32,7 +33,8 @@ public class studentDAO {
         }
     }
 
-    public student getStudentByPermNumber(Integer permNumber) throws SQLException {
+
+    public Optional<student> getStudentByPermNumber(Integer permNumber) throws SQLException {
         String sql = "SELECT perm_number, Pin, name, address, dept FROM students WHERE perm_number = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -46,12 +48,37 @@ public class studentDAO {
                         rs.getString("name"), 
                         rs.getString("address"), 
                         rs.getString("dept"));
-                    return student;
+                    return Optional.of(student);
                 }
             }
         }
         return null;
     }
+
+
+    public Optional<student> getStudentByPermNumberAndPin(Integer permNumber, Integer pin) throws SQLException {
+        String sql = "SELECT perm_number, Pin, name, address, dept FROM students WHERE perm_number = ? AND pin = ?";
+        
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, permNumber);
+            pstmt.setInt(2, pin);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    student student = new student(
+                        rs.getInt("perm_number"), 
+                        rs.getInt("pin"), 
+                        rs.getString("name"), 
+                        rs.getString("address"), 
+                        rs.getString("dept"));
+                    return Optional.of(student);
+                }
+            }
+        }
+        return Optional.empty();
+    }
+
+
 
     public List<student> getAllstudents() throws SQLException {
         List<student> students = new ArrayList<>();
@@ -88,11 +115,11 @@ public class studentDAO {
         }
     }
 
-    public boolean deletestudent(Integer perm) throws SQLException {
+    public boolean deletestudent(String perm) throws SQLException {
         String sql = "DELETE FROM students WHERE perm_number = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, perm);
+            pstmt.setString(1, perm);
             
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;

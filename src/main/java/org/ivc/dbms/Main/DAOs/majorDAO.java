@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.ivc.dbms.Main.classes.major;
 
@@ -30,7 +31,7 @@ public class majorDAO {
         }
     }
 
-    public major getmajorbyname(String name) throws SQLException {
+    public Optional<major> getmajorbyname(String name) throws SQLException {
         String sql = "SELECT name FROM major WHERE name = ?";
         
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -39,11 +40,11 @@ public class majorDAO {
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     major major = new major(rs.getString("name"));
-                    return major;
+                    return Optional.of(major);
                 }
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public List<major> getAllmajors() throws SQLException {

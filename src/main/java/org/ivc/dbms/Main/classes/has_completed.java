@@ -1,15 +1,23 @@
 package org.ivc.dbms.Main.classes;
 
 public class has_completed {
-    private Long studentId;
+    private Integer studentId;
     private String courseName;
-    private char grade;
+    private String quarter;
+    private String grade;
 
-    public Long getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setQuarter(String quarter) {
+        this.quarter = quarter;
+    }
+
+    public String getQuarter(){
+        return quarter;
+    }
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 
@@ -21,11 +29,11 @@ public class has_completed {
         this.courseName = courseName;
     }
 
-    public char getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(char grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
 
@@ -40,10 +48,11 @@ public class has_completed {
         return sb.toString();
     }
 
-    public has_completed(Long studentId, String courseName, char grade) {
+    public has_completed(Integer studentId, String courseName, String grade, String quarter) {
         this.studentId = studentId;
         this.courseName = courseName;
         this.grade = grade;
+        this.quarter = quarter; // Default value, can be set later if needed
     }
 
 
